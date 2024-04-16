@@ -1,0 +1,139 @@
+footer {
+    box-shadow: 1px -1px 5px rgb(22, 22, 22);
+    background-color: #f8f1f1;
+}
+#footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 4em;
+}
+.footer-detiles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0;
+}
+#copy-right {
+    text-align: center;
+    height: 60px;
+    padding-top: 5px;
+}
+.footer-detiles input {
+    padding: 15px;
+    width: 20em;
+    border-radius: 20px;
+    border: 1px solid #777777;
+}
+
+.footer-detiles button {
+    width: 10em;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    background-color: #ff0000;
+    cursor: pointer;
+    color: #fff;
+    animation: subscribe-button 2s 4s linear infinite;
+}
+/* .footer-detiles button:hover {
+    background-color: #fff;
+    color: #000;
+    color: #ff0000;
+} */
+#footer-company-detiles {
+    max-width: 20%;
+    text-align: left;
+}
+img {
+    width: 143px;
+    height: 60px;
+}
+a, #footer-company-detiles {
+    color: #46494b;
+}
+.footer-detiles a:hover {
+    color: #faadf3;
+}
+
+.footer-title {
+    font-weight: 700;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.news-letter {
+    padding-top: 25px;
+}
+#socials {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#socials svg {
+    cursor: pointer;
+    border: 10px solid #fff;
+    padding: 5px;
+    border-radius: 20%;
+}
+#socials svg:nth-child(1) {
+    background-color: #000;
+    color: #fff;
+}
+#socials svg:nth-child(2) {
+    background-color: #0000ff;
+    color: #fff;
+}
+#socials svg:nth-child(3) {
+    color: #fff;
+    background: linear-gradient(to bottom right, #0000ff, #f704c2, #ff0000, #ffee00);
+}
+#socials svg:nth-child(4) {
+    color: #ff0000;
+    background-color: #fff;
+}
+#socials svg:nth-child(5) {
+    color: #000;
+    background-color: #fff;
+}
+#socials svg:nth-child(1):hover, #socials svg:nth-child(2):hover,#socials svg:nth-child(3):hover, #socials svg:nth-child(4):hover, #socials svg:nth-child(5):hover {
+    color: #000;
+    background: #fff;
+    font-size: 1.04em;
+}
+@media (max-width: 767px) {
+    #footer-container {
+        flex-direction: column;
+    }
+    .footer-detiles {
+        flex-direction: row;
+        gap: 10px;
+        font-size: 1.1em;
+    }
+    #footer-container {
+        padding-bottom: 1em;
+    }
+    .socials {
+        flex-direction: column;
+    }
+    #footer-company-detiles {
+        max-width: 100%;
+        text-align: center;
+        padding: 0 10px;
+    }
+    #footer-company-detiles p {
+        text-align: left;
+    }
+    .footer-title {
+        display: none;
+    }
+}
+@keyframes subscribe-button {
+    from {
+        background-color: #fff;
+        color: #ff0000;
+    }    
+    to {
+        background-color: #ff0000;
+        color: #fff;
+    }
+}

@@ -1,0 +1,112 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px rgb(22, 22, 22);
+    padding: 0 30px;
+}
+#logo {
+    width: 167px;
+    height: 60px;
+}
+header img {
+    width: 100%;
+    height: 100%;
+}
+nav, #additional-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+#mobile-nav, #mobile-additional-menu {
+    display: none;
+}
+a {
+    list-style: none;
+    text-decoration: none;
+}
+header a {
+    color: #000;
+}
+#nav-head {
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    background-color: #fff;
+}
+.fa-caret-down, .fa-magnifying-glass {
+    margin: 0 5px;
+}
+header a:hover, #mobile-nav:hover #nav-head, #search-bar:hover {
+    border-bottom: 2px solid #dd0d0db0;
+}
+#mobile-nav-content, #mobile-additional-nav-content {
+    display: none;
+    position: absolute;
+    min-width: auto;
+    box-shadow: 0 4px 8px 0px rgba(255, 255, 255, 0.2);
+    z-index: 1;
+    background-color: #fff;
+    font-size: 12px;
+}
+#mobile-nav-content a {
+    padding: 10px;
+    display: block;
+    text-align: left;
+}
+#mobile-nav:hover #mobile-nav-content {
+    display: block;
+}
+#mobile-additional-menu:hover #mobile-additional-nav-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
+    gap: 10px;
+}
+#bars-nav-head {
+    cursor: pointer;
+}
+#heart-mobile {
+    display: none;
+}
+nav .fa-heart, #additional-nav .fa-heart {
+    color: #a70606;
+}
+@media (max-width: 767px) {
+    #logo {
+        width: 80px;
+        height: auto;
+    }
+
+    nav a:nth-child(3), nav a:nth-child(4), nav a:nth-child(5), nav a:nth-child(7) {
+        display: none;
+    }
+    .fa-heart {
+        display: block;
+    }
+    #mobile-nav {
+        display: block;
+        width: max-content;
+    }
+    header nav {
+        gap: 5px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    #additional-nav {
+        display: none;
+    }
+    #mobile-additional-menu {
+        display: block;
+        width: max-content;
+    }
+    #heart-mobile {
+        display: block;
+    }
+    #mobile-additional-nav-content {
+        right: 0;
+    }
+}

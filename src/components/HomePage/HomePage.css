@@ -1,0 +1,718 @@
+#categories-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+#mens-fashion-container {
+    max-width: 45%;
+    padding-left: 50px;
+    background-color: rgb(119, 101, 80);
+    max-height: 90vh;
+}
+
+#men-fashion-detiles {
+    margin: 50% auto;
+    position: relative;
+    z-index: 2;
+    max-width: 50%;
+    right: 10em;
+    top: -13em;
+}
+#mens-fashion-container div:nth-child(2) {
+    position: absolute;
+    z-index: 1;
+    width: fit-content;
+    height: max-content;
+    top: 33px;
+    left: 20em;
+    overflow: hidden;
+}
+#mens-fashion-container div:nth-child(1) p:nth-child(1) {
+    font-size: 2em;
+    font-weight: 700;
+    font-family: fangsong;
+}
+#mens-fashion-container div:nth-child(1) p:nth-child(2) {
+    font-family: auto;
+    font-size: 40px;
+    letter-spacing: 10px;
+    margin-bottom: 10px;
+}
+#mens-fashion-container div p span {
+    display: block;
+    color: rgb(219, 218, 218);
+    font-size: 32px;
+}
+#mens-fashion-container div:nth-child(1) p:nth-child(3) {
+    font-family: cursive;
+    color: rgb(219, 218, 218);
+}
+#mens-fashion-container div button, .fashion-container button{
+    padding: 10px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    margin-left: 4em;
+}
+#mens-fashion-container div button:hover, .fashion-container button:hover, #discount-button:hover {
+    border-bottom: 3px solid #5a260d;
+}
+
+#mens-fashion-container img {
+    width: 100%;
+    height: 100%;
+}
+#crown {
+    height: auto;
+    position: absolute;
+    top: 9.5em;
+    left: 20em;
+    max-width: 66px;
+}
+#crown img {
+    position: relative;
+    top: -8px;
+    left: -6px;
+}
+#crown::before {
+    content: "";
+    border: 3px solid #b99121;
+    display: block;
+    width: 65px;
+    height: 65px;
+    position: inherit;
+    top: -10px;
+    left: -10px;
+    border-top: 3px solid #000;
+    border-left: 3px solid #000;
+    border-bottom: 3px solid #000;
+    animation: border-rotate  6s linear 7s infinite;
+}
+#crown::after {
+    content: "";
+    border: 3px solid #b99121;
+    display: block;
+    width: 75px;
+    height: 75px;
+    position: inherit;
+    top: -15px;
+    left: -15px;
+    border-top: 3px solid #000;
+    border-right: 3px solid #000;
+    border-left: 3px solid #000;
+    animation: outer-border-rotate  6s linear 7s infinite;
+}
+#sub-categories-cotainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 10px;
+}
+.sub-categories {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    height: 45vh;
+}
+.fashion-container {
+    width: 50%;
+    padding-left: 25px;
+}
+.womens-fashion-container {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJh2kmiTvgxuePxIV0IscJWoGYU-eMFvT6FQ&usqp=CAU");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.kids-fashion-container {
+    background-image: url("../../../public/Images/KidsImages/kidswear1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.cosmetiics-container {
+    margin-top: 10px;
+    background-image: url("../../../public/Images/Cosmetics/cosmetics2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.accessories-container {
+    margin-top: 10px;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9ZcTdxDBC1w1TadprbYDvyiHltyg4e1D6eg&usqp=CAU");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fashion-container p:nth-child(1) {
+    font-family: cursive;
+    background-color: #fff;
+    margin-right: 8em;
+    text-align: center;
+}
+.fashion-container p:nth-child(2) {
+    font-weight: 500;
+    background-color: #fff;
+    margin-right: 14em;
+}
+.fashion-container button {
+    margin: 0;
+}
+.fashion-container p:nth-child(1) {
+    margin-top: 5em;
+}
+#new-product-nav-container {
+    display: flex;
+    justify-content: space-around;
+}
+#new-product-nav li {
+    list-style: none;
+    cursor: pointer;
+}
+#new-product-nav li:hover {
+    border-bottom: 2px solid #5a260d;
+}
+.product-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+.product-container:nth-child(3), .product-container:nth-child(4) {
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+.product {
+    width: 15em;
+    height: 21em;
+}
+.product img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10em;
+    box-shadow: 0px 0px 3px rgb(0, 0, 0, 0.73);
+}
+
+.product-name {
+    text-align: center;
+    margin: 4px;
+    letter-spacing: 4px;
+    font-family: cursive;
+}
+.product-price {
+    text-align: center;
+    margin: 4px;
+    font-weight: 700;
+}
+.product svg {
+    position: relative;
+    top: -5em;
+    left: 3em;
+    font-size: 2em;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px;
+    border-radius: 50%;
+}
+.product-hover-background {
+    cursor: pointer;
+    width: 15em;
+    height: 21em;
+    position: relative;
+    top: -27.5em;
+    border-radius: 10em;
+}
+.product-hover-background:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: product-hover-state  2s linear infinite;
+}
+#more-product-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+.more-product {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+h4 {
+    text-align: center;
+}
+.product-item-container {
+    background-color: #efefef;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+}
+.product-item-container img {
+    height: 130px;
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.product-item-container div {
+    text-align: center;
+}
+#discount-countdown {
+    display: flex;
+    margin: 5em 5em;
+    height: 60vh;
+}
+#discount-left-img {
+    width: 50%;
+}
+#discount-countdown div:nth-child(1) img {
+    width: 100%;
+    height: 100%;
+}
+#discount-right-container {
+    width: 50%;
+    background-color: blanchedalmond;
+}
+#discount-right-item-container {
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    top: -10px;
+}
+#discount-right-item-container::before {
+    content: "";
+    display: block;
+    width: 15em;
+    height: 15em;
+    border-radius: 50%;
+    background-color: #efefef;
+    position: absolute;
+    left: 11em;
+    top: -2em;
+    z-index: -1;
+}
+#discount {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: cursive;
+}
+#summer {
+    font-weight: 700;
+    font-size: 2em;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #5a260d;
+    margin: 5px 0;
+}
+#sales {
+    font-size: 1.1em;
+    font-weight: 700;
+}
+#discount-button {
+    padding: 10px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    font-size: 1.3em;
+}
+#percentage {
+    color:#8d0000;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    animation: percentage-show 1s 4s infinite;
+    font-size: 1.2em;
+}
+#counter-timmer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px#550707;
+}
+.timmer {
+    font-size: 1.5em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 2px;
+    color: #1d0303;
+}
+.timmer::after{
+    content: ":";
+    font-size: 1.5em;
+    color: #8d0000;
+}
+.sec::after {
+    content: "";
+}
+#offer-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 20px;
+}
+.offer {
+    padding-right: 15px;
+    font-family: cursive;
+    font-size: 1.1em;
+}
+.offer:last-child {
+    border: none;
+}
+.offer svg {
+    color: #800000;
+}
+#time-up {
+    position: absolute;
+    top: 11em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: none;
+    animation: discount-time-animation 1s 3s infinite;
+}
+
+
+
+
+
+
+
+@keyframes outer-border-rotate {
+    0% {
+        border-top: 3px solid #000;
+        border-right: 3px solid #000;
+        border-bottom: 3px solid #000;
+        border-left: 3px solid #b99121;           
+    }
+    33% {
+        border-top: 3px solid #b99121;
+        border-right: 3px solid #000;
+        border-bottom: 3px solid #000;
+        border-left: 3px solid #000;
+    }
+    66% {
+        border-top: 3px solid #000;            
+        border-right: 3px solid #b99121;
+        border-bottom: 3px solid #000;
+        border-left: 3px solid #000;            
+    }    
+    100% {
+        border-top: 3px solid #000;            
+        border-right: 3px solid #000;
+        border-bottom: 3px solid #b99121;
+        border-left: 3px solid #000;            
+    }      
+}
+
+@keyframes border-rotate {
+    0% {
+        border-top: 3px solid #000;
+        border-right: 3px solid #000;
+        border-bottom: 3px solid #b99121;
+        border-left: 3px solid #000;           
+    }
+    33% {
+        border-top: 3px solid #000;
+        border-right: 3px solid #000;
+        border-bottom: 3px solid #000;
+        border-left: 3px solid #b99121;
+    }
+    66% {
+        border-right: 3px solid #000;
+        border-bottom: 3px solid #000;
+        border-left: 3px solid #000;            
+        border-top: 3px solid #b99121;            
+    }
+    100% {
+        border-top: 3px solid #000;              
+        border-right: 3px solid #b99121;
+        border-bottom: 3px solid #000;
+        border-left: 3px solid #000;            
+    }
+}
+@keyframes product-hover-state {
+    0% {
+        box-shadow: 1px -1px 10px -2px red;
+    }
+    20% {
+        box-shadow: 1px 0px 10px -2px red;
+
+    }
+    40% {
+        box-shadow: 0px 1px 10px -2px red;
+    }
+    60% {
+        box-shadow: 0px 1px 10px -2px blue;
+    }
+    80% {
+        box-shadow: -1px 0px 10px -2px blue;
+
+    }
+    100% {
+        box-shadow: -1px -1px 10px -2px blue;
+    }
+    
+}
+@keyframes percentage-show {
+    from {
+        color: #fff;
+    }
+    to {
+        color: #8d0000;
+    }
+}
+@keyframes discount-time-animation {
+    from {
+        color: #000;
+        font-size: 13.5px;
+    }
+    to {
+        color: #8d0000;
+    }
+}
+
+@media (max-width: 767px) {
+    #categories-container {
+        flex-direction: column;
+    }
+    #mens-fashion-container {
+        max-width: 100%;
+        padding: 0;
+        max-height: 50vh;
+        top: -1em;
+        left: 1em;
+    }
+    #mens-fashion-container div:nth-child(1) p:nth-child(1) {
+        font-size: 1.5em;
+        margin-bottom: 4px;
+    }
+    #mens-fashion-container div:nth-child(1) p:nth-child(2) {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+    #mens-fashion-container div:nth-child(1) p:nth-child(3) {
+        font-size: 12px;
+        width: 50%;
+        margin: 0;
+    }
+    #mens-fashion-container div:nth-child(1) button {
+        font-size: 0.7em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    #mens-fashion-container div:nth-child(2) {
+        width: 13em;
+        height: 16.8em;
+        top: 36px;
+        left: 13em;
+    }
+    #men-fashion-detiles {
+        width: 100%;
+        position: static;
+        margin: 0;
+        max-width: 100%;
+        margin-left: 10px;
+    }
+    #crown {
+        max-width: 48px;
+        top: 5em;
+        left: 8em;
+    }
+    #crown img {
+        left: 89px;
+        top: -21px;
+    }
+    #crown::before {
+        width: 45px;
+        height: 45px;
+        top: -24px;
+        left: 87px;
+    }
+    #crown::after {
+        width: 55px;
+        height: 55px;
+        top: -29px;
+        left: 82px;
+    }
+    .fashion-container {
+        padding-left: 0;
+    }
+    #sub-categories-cotainer {
+        margin: 0;
+    }
+    .sub-categories {
+        gap: 0;
+    }
+    .fashion-container p:nth-child(1) {
+        margin-right: 1em;
+    }
+    .fashion-container p:nth-child(2) {
+        margin-right: 7em;
+    }
+    #new-product-nav-container {
+        gap: 10px;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #new-product-cat h2 {
+        font-size:  14px;
+        text-align: center;
+    }
+    #new-product-nav {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .product-container {
+        flex-wrap: wrap;
+    }
+    .product {
+        max-width: 5em;
+        max-height: 8em;
+    }
+    .product-name {
+        font-size: 12px;
+    }
+    .product-price {
+        font-size: 12px;
+    }
+    .product svg {
+        top: -5em;
+        left: 1em;
+        font-size: 1.5em;
+    }
+    .product-hover-background {
+        max-width: 5em;
+        max-height: 8em;
+        top: -14.2em;
+    }
+    #more-product-container {
+        gap: 15px;
+        padding: 5px;
+    }
+    #discount-countdown {
+        height: 40vh;
+        margin: 10px;
+    }
+    #discount-right-item-container {
+        width: 100%;
+    }
+    #discount-right-item-container::before {
+        width: 10em;
+        height: 10em;
+        left: 0.7em;
+    }
+    #discount {
+        font-size: 16px;
+    }
+    #summer {
+        font-size: 1em;
+    }
+    .timmer {
+        font-size: 1em;
+    }
+    #time-up {
+        top: 7.3em;
+        font-size: 14px;
+    }
+    #counter-timmer {
+        margin: 0; 
+        padding: 0; 
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    #discount-button {
+        font-size: 15px;
+        margin-top: 5px;
+    }
+    #offer-container, .offer{
+        padding: 5px;
+    }
+}
+@media (min-width: 390px) and (max-width: 500px) {
+    #discount-right-item-container {
+        top: 25px;
+    }
+}
+@media  (min-width: 768px) and (max-width: 1199px) {
+    #categories-container {
+        height: 50vh;
+    }
+    #men-fashion-detiles {
+        top: -10em;
+        right: 8em;
+    }
+    #mens-fashion-container div:nth-child(2) {
+        left: 7em;
+        top: 130px;
+    }
+    #mens-fashion-container div:nth-child(2) img {
+        max-width: 350px;
+    }
+    #crown {
+        top: 9.5em;
+        left: 14em;
+        z-index: 2;
+    }
+    .fashion-container p:nth-child(1) {
+        margin-right: 1em;
+    }
+    .fashion-container p:nth-child(2) {
+        margin-right: 7em;
+    }
+    .product {
+        width: 10em;
+        height: 15em;
+    }
+    .product svg {
+        left: 2em;
+    }
+    .product-hover-background {
+        width: 10em;
+        height: 15em;
+        position: relative;
+        top: -21.5em;
+    }
+    #discount-countdown  {
+        height: inherit;
+    }
+    #discount-right-item-container {
+        top: 11px;
+    }
+    #discount-right-item-container::before {
+        left: 22%;
+        top: -2em;
+    }
+    #counter-timmer {
+        max-width: 80%;
+        margin: auto;
+    }
+    #discount-button {
+        margin-top: 40px;
+    }
+}
+@media (width: 768px) {
+    #mens-fashion-container div:nth-child(2) {
+        top: 50px;
+    }
+}
+@media (min-width: 768px) and (max-width: 900px) {
+    #crown {
+        top: 6em;
+        left: 11em;
+    }
+    #discount-right-item-container {
+        top: 8px;
+        left: -13px;
+    }
+    #discount-right-item-container::before {
+        left: 13%;
+    }
+    #summer {
+        font-size: 1.4em;
+    }
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+    #mens-fashion-container div:nth-child(2) {
+        left: 10em;
+        top: 8.5em;
+    }
+    #mens-fashion-container div:nth-child(2) img{
+        max-width: fit-content;
+    }
+
+}
