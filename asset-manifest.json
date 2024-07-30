@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/DhakaFash/static/css/main.19a66a1f.css",
-    "main.js": "/DhakaFash/static/js/main.7bacf3d8.js",
+    "main.css": "/DhakaFash/static/css/main.11733d33.css",
+    "main.js": "/DhakaFash/static/js/main.0be854f8.js",
     "static/js/453.6e72ad4f.chunk.js": "/DhakaFash/static/js/453.6e72ad4f.chunk.js",
     "static/media/womenswear.jpg": "/DhakaFash/static/media/womenswear.4046ff4280d44039c702.jpg",
     "static/media/crown.png": "/DhakaFash/static/media/crown.8b757b654e64988b824a.png",
@@ -9,14 +9,15 @@
     "static/media/kidswear1.png": "/DhakaFash/static/media/kidswear1.26e881c69f7946612e5b.png",
     "static/media/Mens_Fashion_Picture.png": "/DhakaFash/static/media/Mens_Fashion_Picture.9cd8d0fbf1f65599384d.png",
     "static/media/mens_wear.jpg": "/DhakaFash/static/media/mens_wear.8895997abc7a81d76f6b.jpg",
+    "static/media/logo.png": "/DhakaFash/static/media/logo.a16e5242232c6f378336.png",
     "static/media/women-product.jpg": "/DhakaFash/static/media/women-product.4df91f55bfdeb8707dc5.jpg",
     "index.html": "/DhakaFash/index.html",
-    "main.19a66a1f.css.map": "/DhakaFash/static/css/main.19a66a1f.css.map",
-    "main.7bacf3d8.js.map": "/DhakaFash/static/js/main.7bacf3d8.js.map",
+    "main.11733d33.css.map": "/DhakaFash/static/css/main.11733d33.css.map",
+    "main.0be854f8.js.map": "/DhakaFash/static/js/main.0be854f8.js.map",
     "453.6e72ad4f.chunk.js.map": "/DhakaFash/static/js/453.6e72ad4f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.19a66a1f.css",
-    "static/js/main.7bacf3d8.js"
+    "static/css/main.11733d33.css",
+    "static/js/main.0be854f8.js"
   ]
 }
