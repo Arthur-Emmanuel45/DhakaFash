@@ -1,0 +1,136 @@
+.signup_login_containter{
+    display: flex;
+    border-radius: 5px;
+    margin: auto;
+    box-shadow: 0px 1px 1px 1px #e2e2e2;
+    align-items: center;
+}
+.left_side, .login_right_side {
+    background-color: #332a20;
+    width: 40%;
+    color: #fff;
+    height: 32.5em;
+    text-align: center;
+    background-image: url('../Images/MensImages/Mens_Fashion_Picture.png');
+    background-position: center;
+}
+.background_overlay{
+    height: 32.5em;
+    background-color: rgba(59, 49, 36, 0.5);
+}
+.left_side, .background_overlay{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 15px;   
+}
+.login_right_side{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 5px; 
+}
+.signupLogin_logo {
+    margin-top: 5%;
+}
+.signup_text, .login_text {
+    margin: 7em 0;
+}
+.signup_text button, .login_text button {
+    padding: 10px 50px;
+    border-radius: 14px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+}
+.signup_text button:hover, .login_text button:hover {
+    cursor: pointer;
+    background-color: #332a20;
+}
+.right_side, .login_left_side {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #332a20d8;
+    background-color: #eeeeee;
+    width: 60%;
+    height: 32.5em;
+}
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 40%;
+}
+.socials svg {
+    border-radius: 50%;
+    border: 1px solid #cecece;
+    padding: 10px;
+}
+.fa-google {
+    color: #ff0404e5;
+}
+.fa-facebook, .fa-linkedin {
+    color: #0077ff;
+}
+.fa-google:hover, .fa-facebook:hover, .fa-linkedin:hover {
+    cursor: pointer;
+    background-color: #7765507e;
+}
+.right_side form, .login_left_side form {
+    display: flex;
+    flex-direction: column;
+}
+.right_side form input, .login_left_side input {
+    padding: 15px;
+    width: 20em;
+    border-radius: 5px;
+    border: none;
+    background-color: #6565657c;
+}
+.right_side form input::placeholder, .login_left_side input::placeholder {
+    padding-left: 10%;
+}
+.right_side form svg, .login_left_side form svg {
+    color: #332a20;
+    position: relative;
+    top: 32px;
+    width: 32px;
+}
+.right_side form button, .login_left_side button {
+    color: #fff;
+    width: 55%;
+    height: 37px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 14px;
+    border: none;
+    background-color: #332a20;
+}
+.login_left_side button {
+    width: 28%;
+}
+.right_side form button:hover , .login_left_side button:hover{
+    cursor: pointer;
+    background-color: #776550;
+}
+@media (max-width: 767px) {
+    .signup_login_containter {
+        width: 100%;
+    }
+    .right_side,.login_left_side {
+        width: 100%;
+        background-color: rgba(59, 49, 36, 0.8);
+        background-image: url('../Images/MensImages/Mens_Fashion_Picture.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #fff;
+    }
+    .left_side, .login_right_side {
+        display: none;
+    }
+    .socials {
+        flex-direction: row;
+    }
+    .right_side form input::placeholder, .login_left_side input::placeholder,.right_side form svg, .login_left_side form svg {
+        color: #f3f3f3d8;
+    }
+    .right_side form input, .login_left_side input {
+        border: 1px solid black;
+    }
+}

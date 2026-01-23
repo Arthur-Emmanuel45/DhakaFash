@@ -9,6 +9,7 @@
     padding-left: 50px;
     background-color: rgb(119, 101, 80);
     max-height: 90vh;
+    position: relative;
 }
 
 #men-fashion-detiles {
@@ -21,12 +22,10 @@
 }
 #mens-fashion-container div:nth-child(2) {
     position: absolute;
-    z-index: 1;
-    width: fit-content;
-    height: max-content;
-    top: 33px;
+    width: max-content;
+    height: fit-content;
+    top: 1.5%;
     left: 20em;
-    overflow: hidden;
 }
 #mens-fashion-container div:nth-child(1) p:nth-child(1) {
     font-size: 2em;
@@ -66,7 +65,7 @@
 #crown {
     height: auto;
     position: absolute;
-    top: 9.5em;
+    top: 15%;
     left: 20em;
     max-width: 66px;
 }
@@ -127,14 +126,14 @@
     background-size: cover;
 }
 .kids-fashion-container {
-    background-image: url("../../../public/Images/KidsImages/kidswear1.png");
+    background-image: url("../../Images/KidsImages/kidswear1.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .cosmetiics-container {
     margin-top: 10px;
-    background-image: url("../../../public/Images/Cosmetics/cosmetics2.png");
+    background-image: url("../../Images/Cosmetics/cosmetics2.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -166,65 +165,27 @@
 #new-product-nav-container {
     display: flex;
     justify-content: space-around;
+    position: relative;
+    background-color: #ffffff;
 }
-#new-product-nav li {
-    list-style: none;
+.product-nav, .product-nav-active {
     cursor: pointer;
+    font-size: 1.1em;
+    background-color: #fff;
+    border: none;
 }
-#new-product-nav li:hover {
+.product-nav:hover {
     border-bottom: 2px solid #5a260d;
 }
-.product-container {
-    display: flex;
-    justify-content: space-evenly;
-}
-.product-container:nth-child(3), .product-container:nth-child(4) {
-    margin-top: 5em;
-    margin-bottom: 5em;
-}
-.product {
-    width: 15em;
-    height: 21em;
-}
-.product img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10em;
-    box-shadow: 0px 0px 3px rgb(0, 0, 0, 0.73);
+.product-nav-active {
+    border-bottom: 2px solid #b80505;
 }
 
-.product-name {
-    text-align: center;
-    margin: 4px;
-    letter-spacing: 4px;
-    font-family: cursive;
-}
-.product-price {
-    text-align: center;
-    margin: 4px;
-    font-weight: 700;
-}
-.product svg {
-    position: relative;
-    top: -5em;
-    left: 3em;
-    font-size: 2em;
-    color: #fff;
-    border: 1px solid #fff;
-    padding: 5px;
-    border-radius: 50%;
-}
-.product-hover-background {
-    cursor: pointer;
-    width: 15em;
-    height: 21em;
-    position: relative;
-    top: -27.5em;
-    border-radius: 10em;
-}
-.product-hover-background:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-    animation: product-hover-state  2s linear infinite;
+#new-product-nav {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }
 #more-product-container {
     display: flex;
@@ -365,12 +326,6 @@ h4 {
     animation: discount-time-animation 1s 3s infinite;
 }
 
-
-
-
-
-
-
 @keyframes outer-border-rotate {
     0% {
         border-top: 3px solid #000;
@@ -424,29 +379,6 @@ h4 {
         border-left: 3px solid #000;            
     }
 }
-@keyframes product-hover-state {
-    0% {
-        box-shadow: 1px -1px 10px -2px red;
-    }
-    20% {
-        box-shadow: 1px 0px 10px -2px red;
-
-    }
-    40% {
-        box-shadow: 0px 1px 10px -2px red;
-    }
-    60% {
-        box-shadow: 0px 1px 10px -2px blue;
-    }
-    80% {
-        box-shadow: -1px 0px 10px -2px blue;
-
-    }
-    100% {
-        box-shadow: -1px -1px 10px -2px blue;
-    }
-    
-}
 @keyframes percentage-show {
     from {
         color: #fff;
@@ -464,7 +396,6 @@ h4 {
         color: #8d0000;
     }
 }
-
 @media (max-width: 767px) {
     #categories-container {
         flex-direction: column;
@@ -473,8 +404,6 @@ h4 {
         max-width: 100%;
         padding: 0;
         max-height: 50vh;
-        top: -1em;
-        left: 1em;
     }
     #mens-fashion-container div:nth-child(1) p:nth-child(1) {
         font-size: 1.5em;
@@ -497,8 +426,9 @@ h4 {
     #mens-fashion-container div:nth-child(2) {
         width: 13em;
         height: 16.8em;
-        top: 36px;
-        left: 13em;
+        position: absolute;
+        left: 55%;
+        top: 7%;
     }
     #men-fashion-detiles {
         width: 100%;
@@ -508,8 +438,8 @@ h4 {
         margin-left: 10px;
     }
     #crown {
-        max-width: 48px;
-        top: 5em;
+        max-width: 40px;
+        top: 15%;
         left: 8em;
     }
     #crown img {
@@ -517,14 +447,14 @@ h4 {
         top: -21px;
     }
     #crown::before {
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
         top: -24px;
         left: 87px;
     }
     #crown::after {
-        width: 55px;
-        height: 55px;
+        width: 45px;
+        height: 45px;
         top: -29px;
         left: 82px;
     }
@@ -533,6 +463,7 @@ h4 {
     }
     #sub-categories-cotainer {
         margin: 0;
+        position: relative;
     }
     .sub-categories {
         gap: 0;
@@ -556,6 +487,7 @@ h4 {
         font-size: 14px;
         text-align: center;
         margin-bottom: 20px;
+        gap: 4px;
     }
     .product-container {
         flex-wrap: wrap;
@@ -565,24 +497,20 @@ h4 {
         max-height: 8em;
     }
     .product-name {
-        font-size: 12px;
+        font-size: 11px;
+        letter-spacing: 2px;
     }
     .product-price {
         font-size: 12px;
     }
-    .product svg {
-        top: -5em;
-        left: 1em;
-        font-size: 1.5em;
-    }
     .product-hover-background {
         max-width: 5em;
         max-height: 8em;
-        top: -14.2em;
     }
     #more-product-container {
         gap: 15px;
         padding: 5px;
+        margin-top: 20px;
     }
     #discount-countdown {
         height: 40vh;
@@ -595,6 +523,12 @@ h4 {
         width: 10em;
         height: 10em;
         left: 0.7em;
+    }
+    h4 {
+        margin-bottom: 0;
+    }
+    .offer svg {
+        margin: 0 30%;
     }
     #discount {
         font-size: 16px;
@@ -637,16 +571,21 @@ h4 {
         right: 8em;
     }
     #mens-fashion-container div:nth-child(2) {
-        left: 7em;
-        top: 130px;
+        position: absolute;
+        top: 5%;
+        left: 40%;
     }
     #mens-fashion-container div:nth-child(2) img {
-        max-width: 350px;
+        max-width: 300px;
+        height: 590px;
     }
     #crown {
-        top: 9.5em;
-        left: 14em;
-        z-index: 2;
+        position: absolute;
+        top: 5%;
+        left: 45%;
+    }
+    .product-nav, .product-nav-active {
+        padding: 0px 10px;
     }
     .fashion-container p:nth-child(1) {
         margin-right: 1em;
@@ -658,14 +597,9 @@ h4 {
         width: 10em;
         height: 15em;
     }
-    .product svg {
-        left: 2em;
-    }
     .product-hover-background {
         width: 10em;
         height: 15em;
-        position: relative;
-        top: -21.5em;
     }
     #discount-countdown  {
         height: inherit;
@@ -685,34 +619,17 @@ h4 {
         margin-top: 40px;
     }
 }
-@media (width: 768px) {
+@media (min-width: 768px) and (max-width: 799px) {
     #mens-fashion-container div:nth-child(2) {
-        top: 50px;
+        height: 300px;  
+    } 
+    #mens-fashion-container div:nth-child(2) img {
+        height: 500px;  
     }
-}
-@media (min-width: 768px) and (max-width: 900px) {
-    #crown {
-        top: 6em;
-        left: 11em;
-    }
-    #discount-right-item-container {
-        top: 8px;
-        left: -13px;
-    }
-    #discount-right-item-container::before {
-        left: 13%;
-    }
-    #summer {
+    #mens-fashion-container div:nth-child(1) p:nth-child(2),#mens-fashion-container div p span {
         font-size: 1.4em;
     }
-}
-@media (min-width: 900px) and (max-width: 1199px) {
-    #mens-fashion-container div:nth-child(2) {
-        left: 10em;
-        top: 8.5em;
+    #mens-fashion-container div:nth-child(1) p:nth-child(2) {
+        margin-top: -20px;
     }
-    #mens-fashion-container div:nth-child(2) img{
-        max-width: fit-content;
-    }
-
 }

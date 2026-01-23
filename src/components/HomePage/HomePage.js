@@ -1,10 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./HomePage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCab,faRotateForward, faHeart, faMoneyBill, faMoneyCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCab,faRotateForward, faMoneyBill, faMoneyCheck } from "@fortawesome/free-solid-svg-icons";
+import AllProducts from "./AllProducts/AllProducts";
+import MenProducts from "./MenProducts/MenProducts";
+import WomenProducts from "./WomenProducts/WomenProducts";
+import KidProducts from "./KidProducts/KidProducts";
+import Cosmetics from "./Cosmetics/Cosmetics";
+import Accessories from "./Accessories/Accessories";
+
+//List product buttons navigation
+const productNavButtons = [ 'All', 'Men', 'Women', 'Kid', 'Cosmetics', 'Accessories' ];
 
 const HomePage = () => {
-
+    // Discount timer setup
     const[timerdays, setTimerDays] = useState("00");
     const[timerhours, setTimerHours] = useState("00");
     const[timerminutes, setTimerMinutes] = useState("00");
@@ -14,13 +23,12 @@ const HomePage = () => {
 
     const updateTimeUp = () => {
         timeUp.current.style.display = "block";
-        console.log("times up");
     }
 
     let interval;
-
+    //Discount Timer function
     const startTimer = () => {
-        const countdownDate = new Date("April 15, 2024 00:00:00:00").getTime();
+        const countdownDate = new Date("September 15, 2025 00:00:00:00").getTime();
 
         interval = setInterval(() => {
             const now = new Date().getTime();
@@ -47,6 +55,32 @@ const HomePage = () => {
     useEffect(() => {
         startTimer();
     })
+    //Rendering New product by button clicking 
+    const [isButtonClick, setIsButtonClick] = useState(0);
+    const RenderComponent = ({index}) => {
+        switch (index) {
+          case 0: 
+            return <AllProducts></AllProducts>
+            break;
+          case 1:
+            return <MenProducts></MenProducts>
+            break;
+          case 2: 
+            return <WomenProducts></WomenProducts>
+            break;
+          case 3: 
+            return <KidProducts></KidProducts>
+            break;
+          case 4: 
+            return <Cosmetics></Cosmetics>
+            break;
+          case 5: 
+            return <Accessories></Accessories>
+            break;
+          default:
+            break;
+        }
+    }
 
     return(
         <div>
@@ -58,12 +92,12 @@ const HomePage = () => {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum felis lorem, venenatis id nunc ac, vulputate ultricies erat. Ut vitae lorem sed tortor vehicula consectetur a quis purus</p>
                         <button>Shop Now</button>
                     </div>
-                    <div>
-                        <img src="Images/MensImages/Mens_Fashion_Picture.png" alt="men's fashion"></img>
+                    <div className="home_img">
+                        <img src={require('../../Images/MensImages/Mens_Fashion_Picture.png')} alt="men's fashion"></img>
                     </div>
                     <div>
                         <div id="crown">
-                            <img src="Images/crown.png" alt="crown"></img>
+                            <img src={require('../../Images/crown.png')} alt="crown"></img>
                         </div>
                     </div>
                 </div>
@@ -95,109 +129,17 @@ const HomePage = () => {
                 </div>
 
             </div>
-            <div id="new-product-cat">
-                <div id="new-product-nav-container">
-                    <h2>NEW PRODUCT</h2>
-                    <nav id="new-product-nav">
-                        <li>All</li>
-                        <li>Mens</li>
-                        <li>womens</li>
-                        <li>kids</li>
-                        <li>Cosmetics</li>
-                        <li>Accessories</li>
-                    </nav>
-                </div>
-                <div className="product-container">
-                    <div className="product">
-                        <img src="Images/MensImages/mens_wear.jpg" alt="mens dress"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="Images/WomensImages/cloth-product.jpg" alt="new product"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="Images/WomensImages/women-product.jpg" alt="mens dress"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="https://s.alicdn.com/@sc04/kf/Ha5b2355d31ab4a9cb04736fe1ddfa268A.jpg_300x300.jpg" alt="mens dress"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                </div>
-                <div className="product-container">
-                    <div className="product">
-                        <img src="Images/WomensImages/womenswear.jpg" alt="womens dress"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0cv4gXoftv_C6df_1_oyXOAXogl4D-W7i4w&usqp=CAU" alt="cosmetics dress"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="https://www.thestatesman.com/wp-content/uploads/2017/12/accessories.jpg" alt="accessories"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="Images/ColllectionImages/collection-img.jpg" alt="fashion bag"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                </div>
-                <div className="product-container">
-                    <div className="product">
-                        <img src="https://www.thestatesman.com/wp-content/uploads/2017/12/ear-cuff-768x429.jpg" alt="ear ring"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="https://pyxis.nymag.com/v1/imgs/f09/188/2957acffba58799c5934523deab99cfb7b-07-kids-fashion-week.2x.rsquare.w536.jpg" alt="ear ring"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="https://www.mybaba.com/wp-content/uploads/2021/10/Accessories-Main.jpg" alt="mens dress"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                    <div className="product">
-                        <img src="https://www.circana.com/wp-content/uploads/2022/11/Practical-Purchasing-for-Footwear-and-Accessories-1.jpg" alt="mens dress"></img>
-                        <p className="product-name">product name</p>
-                        <p className="product-price">price</p>
-                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                        <div className="product-hover-background"></div>
-                    </div>
-                </div>
+            <div id="new-product-nav-container">
+                <h2>NEW PRODUCT</h2>
+                <nav id="new-product-nav">
+                    {
+                        productNavButtons.map((productNavButton, index) => {
+                            return <button key={index} className={isButtonClick === index ? "product-nav-active" : "product-nav"} onClick={() => setIsButtonClick(index)}> {productNavButton} </button>
+                        })
+                    }
+                </nav>
             </div>
+            <RenderComponent index={isButtonClick}></RenderComponent>
             <div id="more-product-container">
                 <div className="more-product">
                     <h4>HOT TRED</h4>
@@ -233,7 +175,7 @@ const HomePage = () => {
                 <div className="more-product">
                     <h4>BEST SELLER</h4>
                     <div className="product-item-container">
-                        <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZPrzZ0v9wYegjYGVtj3TspQmYXYy82iLzsw&usqp=CAU" alt="long sleeve shirt"></img>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZPrzZ0v9wYegjYGVtj3TspQmYXYy82iLzsw&usqp=CAU" alt="long sleeve shirt"></img>
                         <div>
                             <p className="product-name">product name</p>
                             <p className="product-price">price</p>

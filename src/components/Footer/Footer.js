@@ -36,7 +36,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div id="footer-company-detiles">
-                        <img src="Images/logo.png" alt="logo"></img>
+                        <img src={require('../../Images/logo.png')} alt="logo"></img>
                         <p>Lerom ispan avac le pronoms dos less insomic lesh ava seed lopinums nodelal anack</p>
                     </div>
                 </div>

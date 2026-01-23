@@ -28,7 +28,7 @@ footer {
 }
 
 .footer-detiles button {
-    width: 10em;
+    width: 100%;
     height: 40px;
     border-radius: 50px;
     border: none;
@@ -37,11 +37,6 @@ footer {
     color: #fff;
     animation: subscribe-button 2s 4s linear infinite;
 }
-/* .footer-detiles button:hover {
-    background-color: #fff;
-    color: #000;
-    color: #ff0000;
-} */
 #footer-company-detiles {
     max-width: 20%;
     text-align: left;

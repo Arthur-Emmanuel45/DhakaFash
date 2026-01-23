@@ -23,12 +23,20 @@ nav, #additional-nav {
 #mobile-nav, #mobile-additional-menu {
     display: none;
 }
-a {
+a, .login_button {
     list-style: none;
     text-decoration: none;
 }
-header a {
+header a, .login_button {
     color: #000;
+    border-bottom-width: 0;
+    transition: border-bottom-width 0.1s ease-in;
+}
+.login_button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font: inherit;
 }
 #nav-head {
     border: none;
@@ -39,8 +47,8 @@ header a {
 .fa-caret-down, .fa-magnifying-glass {
     margin: 0 5px;
 }
-header a:hover, #mobile-nav:hover #nav-head, #search-bar:hover {
-    border-bottom: 2px solid #dd0d0db0;
+header a:hover, #mobile-nav:hover #nav-head, #search-bar:hover, .login_button:hover {
+    border-bottom: 3px solid #5a260d;
 }
 #mobile-nav-content, #mobile-additional-nav-content {
     display: none;
@@ -50,6 +58,14 @@ header a:hover, #mobile-nav:hover #nav-head, #search-bar:hover {
     z-index: 1;
     background-color: #fff;
     font-size: 12px;
+}
+#search_button {
+    background-color: #fff;
+    border: none;
+}
+#search_button:hover {
+    cursor: pointer;
+    color:  #af0000;
 }
 #mobile-nav-content a {
     padding: 10px;
@@ -75,6 +91,35 @@ header a:hover, #mobile-nav:hover #nav-head, #search-bar:hover {
 nav .fa-heart, #additional-nav .fa-heart {
     color: #a70606;
 }
+.login-container-wrapper {
+  position: relative;
+}
+
+.signup_login_dropdown {
+    width: 70%;
+    position: absolute;
+    top: 100%;
+    left: 15%;
+    z-index: 1000;
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.search_dropdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.signup_login_dropdown.show, .search_dropdown.show {
+  transform: scaleY(1);
+  opacity: 1;
+}
 @media (max-width: 767px) {
     #logo {
         width: 80px;
@@ -84,29 +129,37 @@ nav .fa-heart, #additional-nav .fa-heart {
     nav a:nth-child(3), nav a:nth-child(4), nav a:nth-child(5), nav a:nth-child(7) {
         display: none;
     }
-    .fa-heart {
-        display: block;
-    }
-    #mobile-nav {
+    #mobile-nav, #mobile-additional-menu {
         display: block;
         width: max-content;
     }
+    header {
+        height: 60px;
+    }
     header nav {
         gap: 5px;
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 600;
     }
     #additional-nav {
         display: none;
     }
-    #mobile-additional-menu {
-        display: block;
-        width: max-content;
-    }
-    #heart-mobile {
+    #heart-mobile, .fa-heart {
         display: block;
     }
     #mobile-additional-nav-content {
         right: 0;
+    }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    header {
+        gap: 15px;
+        height: 80px;
+    }
+    nav {
+        font-size: 14px;
+    }
+    #additional-nav {
+        font-size: 16px;
     }
 }
