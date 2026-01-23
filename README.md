@@ -2,6 +2,8 @@
 
 ## Overview
 DhakaFash is a modern web application designed to showcase fashion products from Dhaka, offering a seamless and elegant shopping experience. Built using cutting-edge web technologies, DhakaFash provides an intuitive user interface for browsing and purchasing fashion items.
+Responsive e-commerce frontend built with HTML, CSS, and JavaScript.
+Designed with scalability in mind and deployed via GitHub Pages.
 
 ## Features
 - Responsive and mobile-friendly design
