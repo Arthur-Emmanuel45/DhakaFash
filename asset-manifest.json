@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/DhakaFash/static/css/main.69e1cff9.css",
+    "main.css": "/DhakaFash/static/css/main.cf073974.css",
     "main.js": "/DhakaFash/static/js/main.5eda4d11.js",
     "static/js/453.6e72ad4f.chunk.js": "/DhakaFash/static/js/453.6e72ad4f.chunk.js",
     "static/media/womenswear.jpg": "/DhakaFash/static/media/womenswear.4046ff4280d44039c702.jpg",
@@ -13,12 +13,12 @@
     "static/media/logo.png": "/DhakaFash/static/media/logo.a16e5242232c6f378336.png",
     "static/media/women-product.jpg": "/DhakaFash/static/media/women-product.4df91f55bfdeb8707dc5.jpg",
     "index.html": "/DhakaFash/index.html",
-    "main.69e1cff9.css.map": "/DhakaFash/static/css/main.69e1cff9.css.map",
+    "main.cf073974.css.map": "/DhakaFash/static/css/main.cf073974.css.map",
     "main.5eda4d11.js.map": "/DhakaFash/static/js/main.5eda4d11.js.map",
     "453.6e72ad4f.chunk.js.map": "/DhakaFash/static/js/453.6e72ad4f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.69e1cff9.css",
+    "static/css/main.cf073974.css",
     "static/js/main.5eda4d11.js"
   ]
 }
