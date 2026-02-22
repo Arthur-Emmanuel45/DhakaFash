@@ -1,139 +1,63 @@
-import React, {useState} from 'react'
-import './AllProducts.css'
-import '../product.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import React, {useState, useEffect} from 'react';
+import '../../Product/product.css';
+import { fetchProducts } from '../../../Api/apiService';
+import { Link } from 'react-router-dom';
+import LoaderSpinner from '../../LoaderSpinner/LoaderSpinner';
 
 const AllProducts = () => {
 
-    const [likeHover, setlikeHover] = useState(false);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState();
 
-    // if(likeHover){
-    //     console.log("let work");
-    // }
-    // const tyfunc = () => {
-    //     console.log("let's move");
-    // }
-    // setlikeHover(tyfunc());
 
+    useEffect(() => {
+        const loadProducts = async () => {
+            try {
+                const data = await fetchProducts();
+                setProducts(Array.isArray(data) ? data : data.results || []);
+            } catch (err) {
+                setError("Failed to fetch products");
+                setProducts([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+        loadProducts();
+    }, []);
+
+    if (loading) {
+        return (
+            <LoaderSpinner />
+        );
+    }
+       if (error) {
+        return <p style={{ textAlign: "center", color: "red" }}>{error}</p>;
+    }
   return (
-    <div id="product_container">
-        <div id="new-product-cat">
-            <div className="product-container">
-                <div className="product">
-                    <div className="product-img product_img1">
-                        <div className="product-hover-background" onMouseEnter={() => setlikeHover(true)} onMouseLeave={() => setlikeHover(false)}>                       
-                            {/* <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon> */}
-                            {likeHover && <FontAwesomeIcon icon={faHeart} className="product-heart" />}
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
+    
+    <div className="all-products">
+        <div className="product-grid">
+            {products.map((product) => (
+                <div className="product-card" key={product.id}>
+                    <Link to={`/product/${product.id}`}>
+                        <img
+                            src={product.image}
+                            alt={product.name}
+                            className="product-image"
+                        />
+
+                        <p className='product-name'>{product.name}</p>
+                        <p className="category">
+                            category. {product.category.name}
+                        </p>
+                        <p className="price">
+                            ${product.price}
+                        </p>
+                    </Link>
+                    {console.log(product.image)}
                 </div>
-                <div className="product">
-                    <div className="product-img product_img2">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-                <div className="product">
-                    <div className="product-img product_img3">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-                <div className="product">
-                    <div className="product-img product_img4">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-            </div>
-            <div className="product-container">
-                <div className="product">
-                    <div className="product-img product_img5">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-                <div className="product">
-                    <div className="product-img product_img6">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-                <div className="product">
-                    <div className="product-img product_img7">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-                <div className="product">
-                    <div className="product-img product_img8">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-            </div>
-            <div className="product-container">
-                <div className="product">
-                    <div className="product-img product_img9">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-                <div className="product">
-                    <div className="product-img product_img10">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-                <div className="product">
-                    <div className="product-img product_img11">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-                <div className="product">
-                    <div className="product-img product_img12">
-                        <div className="product-hover-background">                       
-                            <FontAwesomeIcon  icon={faHeart} className="product-heart"></FontAwesomeIcon>
-                        </div> 
-                    </div>
-                    <p className="product-name">product name</p>
-                    <p className="product-price">price</p>
-                </div>
-            </div>
+            ))}
         </div>
     </div>
   )

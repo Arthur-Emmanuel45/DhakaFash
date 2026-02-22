@@ -8,7 +8,7 @@ const Footer = () => {
     return(
         <div>
             <footer>
-                <div id="footer-container">
+                <div className="footer-container">
                     <div className="footer-detiles">
                         <div className="footer-title">QUICK LINKS</div>
                         <Link>About</Link>
@@ -23,11 +23,11 @@ const Footer = () => {
                         <Link>Checkout</Link>
                         <Link>Wishlist</Link>
                     </div>
-                    <div className="footer-detiles socials">
+                    <div className="footer-detiles">
                         <div className="footer-title news-letter">NEWSLETTER</div>
                         <input placeholder="Email" type="Email" />
-                        <button id="button">SUBSCRIBE</button>
-                        <div id="socials">
+                        <button className="subscribe_button">SUBSCRIBE</button>
+                        <div className="footer_socials">
                             <FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon>
                             <FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon>
                             <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
@@ -35,13 +35,13 @@ const Footer = () => {
                             <FontAwesomeIcon icon={faTiktok}></FontAwesomeIcon>
                         </div>
                     </div>
-                    <div id="footer-company-detiles">
+                    <div className="footer-company-detiles">
                         <img src={require('../../Images/logo.png')} alt="logo"></img>
                         <p>Lerom ispan avac le pronoms dos less insomic lesh ava seed lopinums nodelal anack</p>
                     </div>
                 </div>
                 <hr></hr>
-                <p id="copy-right">Copyright © 2024 All rights reserved | Programe By Dhaka Art</p>
+                <p className="copy-right">Copyright © 2024 All rights reserved | Programe By Dhaka Art</p>
             </footer>
         </div>
     )

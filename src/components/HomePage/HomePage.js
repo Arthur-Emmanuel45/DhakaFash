@@ -1,82 +1,45 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import UseCountdown from "../../hooks/useCountdown";
 import "./HomePage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCab,faRotateForward, faMoneyBill, faMoneyCheck } from "@fortawesome/free-solid-svg-icons";
 import AllProducts from "./AllProducts/AllProducts";
-import MenProducts from "./MenProducts/MenProducts";
-import WomenProducts from "./WomenProducts/WomenProducts";
-import KidProducts from "./KidProducts/KidProducts";
-import Cosmetics from "./Cosmetics/Cosmetics";
-import Accessories from "./Accessories/Accessories";
+import Product from "../../components/Product/Product";
 
 //List product buttons navigation
-const productNavButtons = [ 'All', 'Men', 'Women', 'Kid', 'Cosmetics', 'Accessories' ];
+const productNavButtons = [ 'All', 'Men', 'Women', 'Kids', 'Cosmetics', 'Accessories' ];
 
 const HomePage = () => {
     // Discount timer setup
-    const[timerdays, setTimerDays] = useState("00");
-    const[timerhours, setTimerHours] = useState("00");
-    const[timerminutes, setTimerMinutes] = useState("00");
-    const[timerseconds, setTimerSeconds] = useState("00");
+    const [discountEnd, setDiscountEnd] = useState(null);
+    const [isButtonClick, setIsButtonClick] = useState(0);
 
-    const timeUp = useRef("Discount TimeUp");
-
-    const updateTimeUp = () => {
-        timeUp.current.style.display = "block";
-    }
-
-    let interval;
-    //Discount Timer function
-    const startTimer = () => {
-        const countdownDate = new Date("September 15, 2025 00:00:00:00").getTime();
-
-        interval = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            const days = Math.floor(distance / (24 * 60 * 60 * 1000));
-            const hours = Math.floor(distance % (24 * 60 * 60 * 1000) / (1000 * 60 * 60));
-            const minutes = Math.floor(distance % (60 * 60 * 1000) / (1000 * 60));
-            const seconds = Math.floor(distance % (60 * 1000) / 1000);
-    
-            if(distance < 0) {
-                clearInterval(interval.current);
-                updateTimeUp();
-            }
-            else {
-                setTimerDays(days);
-                setTimerHours(hours);
-                setTimerMinutes(minutes);
-                setTimerSeconds(seconds);
-            }
-        }, 1000)
-    }
+    const countdown = UseCountdown(discountEnd);
 
     useEffect(() => {
-        startTimer();
-    })
+        fetch("http://127.0.0.1:8000/api/shop/discount/")
+            .then((res) => res.json())
+            .then((data) => setDiscountEnd(data.end_date));
+    }, []);
+
+    if (!countdown) return null;
+
     //Rendering New product by button clicking 
-    const [isButtonClick, setIsButtonClick] = useState(0);
+
     const RenderComponent = ({index}) => {
         switch (index) {
           case 0: 
             return <AllProducts></AllProducts>
-            break;
           case 1:
-            return <MenProducts></MenProducts>
-            break;
+            return <Product cat="men" />
           case 2: 
-            return <WomenProducts></WomenProducts>
-            break;
+            return <Product cat="wommen" />
           case 3: 
-            return <KidProducts></KidProducts>
-            break;
+            return <Product cat="kids" />
           case 4: 
-            return <Cosmetics></Cosmetics>
-            break;
+            return <Product cat="cosmetics" />
           case 5: 
-            return <Accessories></Accessories>
-            break;
+            return <Product cat="accessories" />
           default:
             break;
         }
@@ -84,9 +47,9 @@ const HomePage = () => {
 
     return(
         <div>
-            <div id="categories-container">
-                <div id="mens-fashion-container">
-                    <div id="men-fashion-detiles">
+            <div className="categories-container">
+                <div className="mens-fashion-container">
+                    <div className="men-fashion-detiles">
                         <p>MEN'S FASHION</p>
                         <p>LIMITED <span>EDITION</span></p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum felis lorem, venenatis id nunc ac, vulputate ultricies erat. Ut vitae lorem sed tortor vehicula consectetur a quis purus</p>
@@ -96,12 +59,12 @@ const HomePage = () => {
                         <img src={require('../../Images/MensImages/Mens_Fashion_Picture.png')} alt="men's fashion"></img>
                     </div>
                     <div>
-                        <div id="crown">
+                        <div className="crown">
                             <img src={require('../../Images/crown.png')} alt="crown"></img>
                         </div>
                     </div>
                 </div>
-                <div id="sub-categories-cotainer">
+                <div className="sub-categories-cotainer">
                     <div className="sub-categories">
                         <div className="fashion-container womens-fashion-container">
                             <p>WOMEN'S FASHION</p>
@@ -129,9 +92,9 @@ const HomePage = () => {
                 </div>
 
             </div>
-            <div id="new-product-nav-container">
+            <div className="new-product-nav-container">
                 <h2>NEW PRODUCT</h2>
-                <nav id="new-product-nav">
+                <nav className="new-product-nav">
                     {
                         productNavButtons.map((productNavButton, index) => {
                             return <button key={index} className={isButtonClick === index ? "product-nav-active" : "product-nav"} onClick={() => setIsButtonClick(index)}> {productNavButton} </button>
@@ -140,7 +103,7 @@ const HomePage = () => {
                 </nav>
             </div>
             <RenderComponent index={isButtonClick}></RenderComponent>
-            <div id="more-product-container">
+            <div className="more-product-container">
                 <div className="more-product">
                     <h4>HOT TRED</h4>
                     <div className="product-item-container">
@@ -235,27 +198,33 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <div id="discount-countdown">
-                <div id="discount-left-img">
+            <div className="discount-countdown">
+                <div className="discount-left-img">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9ZcTdxDBC1w1TadprbYDvyiHltyg4e1D6eg&usqp=CAU" alt="countdown-img"></img>
                 </div>
-                <div id="discount-right-container">
-                    <div id="discount-right-item-container">
-                        <p id="discount">DISCOUNT</p>
-                        <p id="summer">SummarFash 2024</p>
-                        <p id="sales">Sale <span id="percentage">35%</span></p>
-                        <div id="counter-timmer">
-                            <p className="days timmer">{timerdays}</p>
-                            <p className="hrs timmer">{timerhours}</p>
-                            <p className="min timmer">{timerminutes}</p>
-                            <p className="sec timmer">{timerseconds}</p>
-                            <p ref={timeUp} id="time-up">Discount TimeUp</p>
+                <div className="discount-right-container">
+                    <div className="discount-right-item-container">
+                        <p className="discount">DISCOUNT</p>
+                        <p className="summer">SummarFash 2024</p>
+                        <p className="sales">Sale <span className="percentage">35%</span></p>
+                        <div className="counter-timmer">
+                            {!countdown.expired ? (
+                                <div className="counter-timmer-data">
+                                    <p className="days timmer">{countdown.days}</p>
+                                    <p className="hrs timmer">{countdown.hours}</p>
+                                    <p className="min timmer">{countdown.minutes}</p>
+                                    <p className="sec timmer">{countdown.seconds}</p>
+                                </div>
+                            ) : (
+                                <p className="time-up">Discount Time Up</p>
+                            )}
                         </div>
-                        <button id="discount-button">Get it Now</button>
+
+                        <button className="discount-button">Get it Now</button>
                     </div>
                 </div>
             </div>
-            <div id="offer-container">
+            <div className="offer-container">
                 <div className="offer">
                     <FontAwesomeIcon icon={faRotateForward}></FontAwesomeIcon>
                     <div>

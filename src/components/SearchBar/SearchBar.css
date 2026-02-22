@@ -1,37 +1,43 @@
-#Search_bar {
+.Search_bar {
     display: flex;
     gap: 15px;
     padding: 25px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     background-color: #fff;
 }
-#Search_bar input {
-    width: 93%;
+.search_bar form {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+.Search_bar input {
+    width: 100%;
     padding: 10px;
     border-radius: 3px;
     border: 1px solid rgb(186, 185, 185);
 }
-#Search_bar button {
+.Search_bar button {
     border: none;
     background-color: #fff;
     cursor: pointer;
     width: 38px;
 }
-#Search_bar svg {
+.Search_bar svg {
     font-size: 20px;
 }
-#Search_bar button:hover {
+.Search_bar button:hover {
     background-color: rgb(230, 229, 229);
     padding: 5px;
     border-radius: 100%;
+    color: #af0000;
 }
 @media (max-width: 767px) {
-    #Search_bar input {
+    .Search_bar input {
         width: 78%;
     }
 }
 @media (min-width: 768px) and (max-width: 1199px) {
-    #Search_bar input {
+    .Search_bar input {
         width: 88%;
     }
 }

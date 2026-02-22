@@ -4,18 +4,20 @@
     margin: auto;
     box-shadow: 0px 1px 1px 1px #e2e2e2;
     align-items: center;
+    padding: 2%;
 }
 .left_side, .login_right_side {
     background-color: #332a20;
-    width: 40%;
+    width: 50%;
     color: #fff;
-    height: 32.5em;
+    height: 37em;
     text-align: center;
     background-image: url('../Images/MensImages/Mens_Fashion_Picture.png');
     background-position: center;
+    background-repeat: no-repeat;
 }
 .background_overlay{
-    height: 32.5em;
+    height: 37em;
     background-color: rgba(59, 49, 36, 0.5);
 }
 .left_side, .background_overlay{
@@ -28,9 +30,13 @@
 }
 .signupLogin_logo {
     margin-top: 5%;
+    width: 50%;
 }
-.signup_text, .login_text {
+.signup_text {
     margin: 7em 0;
+}
+.login_text {
+    margin: 30% auto;
 }
 .signup_text button, .login_text button {
     padding: 10px 50px;
@@ -49,50 +55,50 @@
     flex-direction: column;
     color: #332a20d8;
     background-color: #eeeeee;
-    width: 60%;
-    height: 32.5em;
+    width: 50%;
+    height: 37em;
 }
-.socials {
-    display: flex;
-    justify-content: center;
-    gap: 40%;
+.forget_password {
+    text-align: center;
 }
-.socials svg {
-    border-radius: 50%;
-    border: 1px solid #cecece;
-    padding: 10px;
-}
-.fa-google {
-    color: #ff0404e5;
-}
-.fa-facebook, .fa-linkedin {
-    color: #0077ff;
-}
-.fa-google:hover, .fa-facebook:hover, .fa-linkedin:hover {
-    cursor: pointer;
-    background-color: #7765507e;
+.forget_password:hover {
+    color: #ff0000;
 }
 .right_side form, .login_left_side form {
     display: flex;
     flex-direction: column;
 }
-.right_side form input, .login_left_side input {
-    padding: 15px;
-    width: 20em;
+
+.group_input {
+    position: relative;
+    margin: 15px 0;
+}
+
+.group_input input {
+    width: 80%;
+    padding: 15px 45px;
+    font-size: 16px;
     border-radius: 5px;
     border: none;
     background-color: #6565657c;
+    outline: none;
 }
-.right_side form input::placeholder, .login_left_side input::placeholder {
-    padding-left: 10%;
-}
-.right_side form svg, .login_left_side form svg {
+.input_icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     color: #332a20;
-    position: relative;
-    top: 32px;
-    width: 32px;
+    pointer-events: none;
+    transition: color 0.2s ease;
 }
-.right_side form button, .login_left_side button {
+
+.group_input input:focus + .input_icon,
+.group_input input:not(:placeholder-shown) + .input_icon {
+    opacity: 0;
+}
+
+.right_side form button, .login_left_side button, .routeLoginSignup {
     color: #fff;
     width: 55%;
     height: 37px;
@@ -105,7 +111,7 @@
 .login_left_side button {
     width: 28%;
 }
-.right_side form button:hover , .login_left_side button:hover{
+.right_side form button:hover , .login_left_side button:hover, .routeLoginSignup:hover{
     cursor: pointer;
     background-color: #776550;
 }
@@ -123,9 +129,6 @@
     }
     .left_side, .login_right_side {
         display: none;
-    }
-    .socials {
-        flex-direction: row;
     }
     .right_side form input::placeholder, .login_left_side input::placeholder,.right_side form svg, .login_left_side form svg {
         color: #f3f3f3d8;

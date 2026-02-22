@@ -1,0 +1,20 @@
+.email_sent_container {
+    padding: 40px;
+    text-align: center;
+}
+
+.check_spam {
+    margin-top: 20px;
+    color: #888;
+}
+.resend_email_button {
+    margin-top: 10px;
+    padding: 10px 18px;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-size: 16px;
+}
+.resend_email_button:hover{
+    cursor: pointer;
+    background-color: #888888a6
+}

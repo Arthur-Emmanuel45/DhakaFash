@@ -1,81 +1,114 @@
 import React, {useState} from "react";
-import {Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCaretDown, faHeart, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCartShopping, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "../SearchBar/SearchBar";
-import LoginPage from "../LoginPage/LoginPage";
-import SignUpPage from '../SignUpPage/SignUpPage'
-
+import { useAuth } from "../../Context/AuthContext";
+import { useCart } from "../../Context/CartContext";
 
 const Header  = () =>    
 {
     const [isSearchClick, setIsSearchClick] = useState(false);
-    const [isLogin, setLogin] = useState(false);
-    const [isSignUp, setIsSignUp] = useState(false);
 
     const handleSearch = () => setIsSearchClick(!isSearchClick);
-    const handleSearchOff = () => {
-        setIsSearchClick(false);
-    }
-    const handleLogin = () => {
-        setLogin(!isLogin);
-        setIsSignUp(false)
-    }
-    const handleSignUp = () => {
-        setIsSignUp(!isSignUp);
-        setLogin(false)
-    }
+    const handleSearchOff = () => setIsSearchClick(false);
+
+    const { isAuthenticated, username, logout } = useAuth();
+    const initials = username ? username.charAt(0).toUpperCase() : "";
+
+    const [showMenu, setShowMenu] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const { cartCount } = useCart()
+
     return(
-        <div id="header-container">
+        <div className="header-container">
             <header>
-                <div id="logo">
-                    <img src={ require('../../Images/logo.png') } alt="Logo"></img>
-                </div>
-                <nav>
-                    <Link to="/">HOME</Link>
-                    <div id="mobile-nav">
-                        <button id="nav-head">
-                            SHOP<FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
-                        </button>
-                        <div id="mobile-nav-content">
-                            <Link>WOMEN'S</Link>
-                            <Link>MEN'S</Link>
-                            <Link>KID'S</Link>
+                {mobileOpen && (
+                    <div className="mobile-menu-overlay" onClick={() => setMobileOpen(false)}>
+                        <div className="mobile-menu" onClick={(e) => e.stopPropagation()}>
+                            <Link to="/" onClick={() => setMobileOpen(false)}>Home</Link>
+                            <Link to="/women">Women</Link>
+                            <Link to="/men">Men</Link>
+                            <Link to="/kids">Kids</Link>
+                            <Link to="/contact">Contact</Link>
+
+                            <hr />
+
+                            {!isAuthenticated ? (
+                                <Link to="/login" onClick={() => setMobileOpen(false)}>
+                                    Login / Register
+                                </Link>
+                            ) : (
+                                <>
+                                    <p className="mobile-username">{username}</p>
+                                    <Link to="/profile">Profile</Link>
+                                    <button onClick={logout}>Logout</button>
+                                </>
+                            )}
                         </div>
                     </div>
+                )}
+
+                <div className="logo">
+                    <Link to="/"><img src={ require('../../Images/logo.png') } alt="Logo"></img></Link>
+                </div>
+
+                <nav>
+                    <Link to="/">HOME</Link>
                     <Link>WOMEN'S</Link>
                     <Link>MEN'S</Link>
                     <Link>KID'S</Link>
                     <Link>PAGES</Link>
                     <Link>CONTACT</Link>
-                    <FontAwesomeIcon id="heart-mobile" icon={faHeart}></FontAwesomeIcon>
                 </nav>
-                <div id="additional-nav">
-                    <button className="login_button" onClick={handleLogin}>Login/Register</button>
-                    <button id="search_button" onClick={handleSearch}><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
-                    <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
+                <div className="additional-nav">
+                    {!isAuthenticated ? (
+                        <Link to="/login" className="login_button">Login/Register</Link>
+                    ) : (
+                        <div className="user-menu">
+                            <div className="avatar" onClick={() => setShowMenu(!showMenu)}>
+                                {initials}
+                            </div>
+
+                            {showMenu && (
+                                <div className="dropdown">
+                                    <div className="dropdown-display">
+                                        <p className="username">{username}</p>
+                                        <Link to="/profile">Profile</Link>
+                                        <button onClick={logout}>Logout</button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    <button className="search_button" onClick={handleSearch}><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
+                    <Link to="/cart" className="cart_icon">
+                        <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
+                        {cartCount > 0 && <span className="badge">{cartCount}</span>}
+                    </Link>
                 </div>
-                <div id="mobile-additional-menu">
-                    <div id="bars-nav-head">
-                        <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
-                    </div>
-                    <div id="mobile-additional-nav-content">
-                        <Link>LOGIN/REGISTER</Link>
-                        <Link>CONTACT</Link>
-                        <div id="search-bar">SEARCH <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></div>
-                    </div>
+
+                <div className="mobile-additional-menu">
+                    <button
+                        className="bars-nav-head"
+                        onClick={() => setMobileOpen(!mobileOpen)}
+                    >
+                        <FontAwesomeIcon icon={faBars} />
+                    </button>
+                    <button className="search_button" onClick={handleSearch}><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
+                    <Link to="/cart" className="cart_icon">
+                        <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
+                        {cartCount > 0 && <span className="badge">{cartCount}</span>}
+                    </Link>
                 </div>
+
             </header>
             <div className="login-container-wrapper">
                 <div className={`search_dropdown ${isSearchClick ? 'show' : ''}`}>
                     <SearchBar onSearchOff={handleSearchOff}/>
-                </div>
-                <div className={`signup_login_dropdown ${isLogin ? 'show' : ''}`}>
-                    <LoginPage onSignUpClick={handleSignUp} />
-                </div>
-                <div className={`signup_login_dropdown ${isSignUp ? 'show' : ''}`}>
-                    <SignUpPage onSignInClick={handleLogin} />
                 </div>
             </div>
         </div>
