@@ -6,14 +6,10 @@ import { faDumpster, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const CartPage = () => {
     const { cartItems, updateQuantity, removeFromCart, cartCount } = useCart();
+    const totalCartPrice = cartItems.reduce((total, item) => {
 
-    let totalCartPrice  = 0;
-    let totalPrice = 0;
-
-    cartItems.map(item => (
-        totalPrice = (item.price || 0) * (item.quantity || 1)
-    ));
-    totalCartPrice = totalCartPrice + totalPrice;
+        return total + (item.price || 0) * (item.quantity || 1);
+    }, 0);
 
 
     return (
@@ -30,13 +26,15 @@ const CartPage = () => {
             <div className="cart-main-container">
                 <div className="cart-main">     
                     {cartItems.map(item => (
-                        <div className="cart-container" key={item.id}>
+                        <div className="cart-container" key={item.cartKey}>
                             <img className="cart-image" src={item.image} alt={item.name} />
 
                             <div className="cart-details">
                                 <p>{item.name}</p>
-                                <p>Total: ${(item.price || 0) * (item.quantity || 1)}</p>
-                                <button onClick={() => removeFromCart(item.id)}><FontAwesomeIcon icon={faDumpster} /> Remove</button>
+                                <p>{item.total_stock} left</p>
+                                {item.size && <p>Size: {item.size}</p>}
+                                <p> ${(item.price || 0) * (item.quantity || 1)}</p>
+                                <button onClick={() => removeFromCart(item.cartKey)}><FontAwesomeIcon icon={faDumpster} /> Remove</button>
                             </div>
                             
 
@@ -44,7 +42,7 @@ const CartPage = () => {
                                 <button
                                     onClick={() =>
                                         updateQuantity(
-                                            item.id,
+                                            item.cartKey,
                                             Math.max(1, item.quantity - 1)
                                         )
                                     }
@@ -57,7 +55,7 @@ const CartPage = () => {
                                 <button
                                     onClick={() =>
                                         updateQuantity(
-                                            item.id,
+                                            item.cartKey,
                                             item.quantity + 1
                                         )
                                     }
@@ -72,7 +70,7 @@ const CartPage = () => {
                 <div className="cart-summary">
                     <h3>Cart Summary</h3>
                     {cartItems.length >= 1 && 
-                        <p> Cart Total: {totalCartPrice}</p>
+                        <p> Cart Total: {totalCartPrice.toFixed(2)}</p>
                     }
 
                     <Link to="/checkout">

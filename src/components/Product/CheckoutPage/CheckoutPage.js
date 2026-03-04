@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback  } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../Context/CartContext";
+import "./CheckoutPage.css";
 
 const CheckoutPage = () => {
     const { cartItems } = useCart();
@@ -24,7 +25,7 @@ const CheckoutPage = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const previewOrder = async () => {
+    const previewOrder = useCallback(async () => {
         const token = localStorage.getItem("access");
         setLoading(true);
 
@@ -51,19 +52,20 @@ const CheckoutPage = () => {
         setPreview(data);
 
         setLoading(false);
-    };
+    }, [cartItems, city, couponCode]);
 
     useEffect(() => {
         if (cartItems.length > 0 && city) {
             previewOrder();
         }
-    }, [cartItems, city])
+    }, [cartItems, city, previewOrder]);
 
     const handleSubmit = () => {
         navigate("/order-review", {
             state: {
                 form,
                 cartItems,
+                city,
                 pricing: {
                     subtotal: preview.subtotal,
                     shipping: preview.shipping_fee,
@@ -118,65 +120,69 @@ const CheckoutPage = () => {
     };
 
     return (
-        <div>
-            {loading && <p>Calculating totals...</p>}
+        <div className="checkout-main-container">
             <h2>Checkout</h2>
+            <div className="checkout-container">
+                <div className="form-container">
+                    <form>
+                        <input name="full_name" placeholder="Full Name" onChange={handleChange} required />
+                        <input name="email" placeholder="Email" onChange={handleChange} required />
+                        <input name="phone" placeholder="Phone" onChange={handleChange} required/>
+                        <textarea name="address" placeholder="Address" onChange={handleChange} required/>
+                    </form>
 
-            <input name="full_name" placeholder="Full Name" onChange={handleChange} required />
-            <input name="email" placeholder="Email" onChange={handleChange} required />
-            <input name="phone" placeholder="Phone" onChange={handleChange} required/>
-            <textarea name="address" placeholder="Address" onChange={handleChange} required/>
-           
-            <select
-                value={city}
-                onChange={(e) => {
-                    setCity(e.target.value);
-                }}
-            >
-                <option value="">Select City</option>
-                <option value="Dhaka">Dhaka</option>
-                <option value="Chittagong">Chittagong</option>
-                <option value="Sylhet">Sylhet</option>
-            </select>
-
-            <div className="coupon-box">
-                <input
-                    type="text"
-                    placeholder="Enter coupon code"
-                    value={couponCode}
-                    onChange={(e) => setCouponCode(e.target.value)}
-                />
-                <button onClick={applyCoupon}>Apply Coupon</button>
-                {couponStatus && (
-                    <p
-                        style={{
-                            color: couponStatus.type === "error" ? "red" : "green",
+                    <select
+                        value={city}
+                        onChange={(e) => {
+                            setCity(e.target.value);
                         }}
                     >
-                        {couponStatus.message}
-                    </p>
-                )}
-            </div>
+                        <option value="">Select City</option>
+                        <option value="Dhaka">Dhaka</option>
+                        <option value="Chittagong">Chittagong</option>
+                        <option value="Sylhet">Sylhet</option>
+                    </select>
 
-            <div className="order-summary">
-                {preview?.items && (
-                    <div>
-                        <h3>Order Summary</h3>
-                        {preview.items.map(item => (
-                            <p key={item.product_id}>
-                                {item.name} x {item.quantity}
+                    <div className="coupon-box">
+                        <input
+                            type="text"
+                            placeholder="Enter coupon code"
+                            value={couponCode}
+                            onChange={(e) => setCouponCode(e.target.value)}
+                        />
+                        <button onClick={applyCoupon}>Apply Coupon</button>
+                        {couponStatus && (
+                            <p
+                                style={{
+                                    color: couponStatus.type === "error" ? "red" : "green",
+                                }}
+                            >
+                                {couponStatus.message}
                             </p>
-                        ))}
-
-                        <p>Subtotal: ${preview.subtotal}</p>
-                        <p>Shipping: ${preview.shipping_fee}</p>
-                        <p>Discount: -${preview.coupon_discount_amount}</p>
-                        <h2>Total: ${preview.total_price}</h2>
+                        )}
                     </div>
-                )}
-            </div>
+                    <button className="checkout-button" onClick={handleSubmit}>Continue Checkout</button> 
+                </div>
+                <div className="order-summary">
+                    <h3>Order Summary</h3>
+                    {loading && <p className="summary-total">Calculating totals...</p>}
 
-            <button onClick={handleSubmit}>Continue Checkout</button> 
+                    {preview?.items && (
+                        <div>
+                            {preview.items.map(item => (
+                                <p key={item.product_id}>
+                                    {item.name} x {item.quantity}
+                                </p>
+                            ))}
+
+                            <p>Subtotal: ${preview.subtotal}</p>
+                            <p>Shipping: ${preview.shipping_fee}</p>
+                            <p>Discount: -${preview.coupon_discount_amount}</p>
+                            <h2>Total: ${preview.total_price}</h2>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };

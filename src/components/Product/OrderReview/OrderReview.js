@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import "./OrderReview.css";
 
 const OrderReview = () => {
     const { state } = useLocation();
@@ -6,7 +7,7 @@ const OrderReview = () => {
 
     if (!state) return <p>Invalid access</p>;
 
-    const { form, cartItems, pricing } = state;
+    const { form, city, cartItems, pricing } = state;
     const { subtotal, shipping, discount, finalTotal } = pricing;
     const token = localStorage.getItem("access");
 
@@ -20,33 +21,40 @@ const OrderReview = () => {
             body: JSON.stringify({
                 items: cartItems.map(i => ({
                     product: i.id,
-                    quantity: i.qty,
+                    quantity: i.quantity,
                     price: i.price,
                 })),
                 subtotal,
                 shipping_fee: shipping,
                 discount,                                                                                    
                 total_price: finalTotal,
-                city: form.city,
+                city: city,
                 address: form.address,
             }),
         });
 
         const data = await res.json();
+        if (!res.ok) {
+            console.log(data);
+            alert(data.error || "Order failed");
+            return;
+        }
         navigate(`/order-success/${data.order_id}`);
     };
 
     return (
-        <div>
-            <h2>Review Order</h2>
+        <div className="review-main-container">
+            <div className="review-container">
+                <h2>Review Order</h2>
+                {cartItems.map(i => (
+                    <p className="review-items" key={i.id}>{i.name} x {i.quantity}</p>
+                ))}
 
-            {cartItems.map(i => (
-                <p key={i.id}>{i.name} x {i.quantity}</p>
-            ))}
-
-            <p>{form.address}</p>
-            <p>Total: ${finalTotal}</p>
-            <button onClick={placeOrder}>Place Order</button>
+                <p>{form.address}</p>
+                <p>{city}</p>
+                <p className="final-total">Total: ${finalTotal}</p>
+                <button onClick={placeOrder}>Place Order</button>
+            </div>
         </div>
     );
 };

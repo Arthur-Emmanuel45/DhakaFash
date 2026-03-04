@@ -11,9 +11,24 @@ Designed with scalability in mind and deployed via GitHub Pages.
 - Product catalog with search and filtering
 
 ## Technologies Used
-- **Frontend**: React,
-- **Backend**: phython, Django (under development)
+- **Frontend**: React,CSS3,Fetch API
+- **Backend**: phython, Django 
 - **Deployment**: github pages
+
+##Objective
+To build a fast, responsive, and scalable frontend interface structured for maintainability and seamless backend integration.
+
+##Core Principles
+- Component-based architecture
+- Reusable UI components
+- Clean folder structure
+- Responsive design
+- Performance optimization
+
+##Frontend API Integration & UI Workflow
+##Data Flow Structure
+Frontend → API Request → Backend → Response → UI Update
+
 
 ## Installation
 ### Prerequisites

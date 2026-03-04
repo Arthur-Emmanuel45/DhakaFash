@@ -61,4 +61,14 @@
     background-color: #ececec;
     padding: 20px;
     margin: 20px;
+    border-radius: 10px;
+}
+.cart-summary button {
+    padding: 10px 20px;
+    border: 1px solid #5a260d;
+    background-color: #fff;;
+}
+.cart-summary button:hover {
+    cursor: pointer;
+    border-color: #000;
 }

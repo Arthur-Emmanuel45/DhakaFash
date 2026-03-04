@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {Link} from "react-router-dom";
 import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,7 +20,27 @@ const Header  = () =>
     const [showMenu, setShowMenu] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
 
+    const dropdownRef = useRef(null);
+
     const { cartCount } = useCart()
+
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
+                setShowMenu(false);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
 
     return(
         <div className="header-container">
@@ -67,7 +87,7 @@ const Header  = () =>
                     {!isAuthenticated ? (
                         <Link to="/login" className="login_button">Login/Register</Link>
                     ) : (
-                        <div className="user-menu">
+                        <div className="user-menu" ref={dropdownRef}>
                             <div className="avatar" onClick={() => setShowMenu(!showMenu)}>
                                 {initials}
                             </div>
@@ -76,8 +96,15 @@ const Header  = () =>
                                 <div className="dropdown">
                                     <div className="dropdown-display">
                                         <p className="username">{username}</p>
-                                        <Link to="/profile">Profile</Link>
-                                        <button onClick={logout}>Logout</button>
+                                        <Link to="/profile" onClick={() => setShowMenu(false)}>Profile</Link>
+                                        <button  
+                                            onClick={() => { 
+                                                logout();
+                                                setShowMenu(false);
+                                            }}
+                                        >
+                                            Logout
+                                        </button>
                                     </div>
                                 </div>
                             )}

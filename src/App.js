@@ -41,7 +41,7 @@ function App() {
         <Route path="/search" element={<SearchResults />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-review" element={<OrderReview />} />
-        <Route path="/order-success" element={<OrderSuccess />} />
+        <Route path="/order-success/:id" element={<OrderSuccess />} />
         <Route path="/order-details" element={<OrderDetail />} />
       </Routes>
 

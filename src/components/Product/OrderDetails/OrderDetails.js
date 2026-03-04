@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PayPalButtons } from "@paypal/react-paypal-js";
 import "./OrderDetails.css";
 
 const OrderDetail = () => {
@@ -19,16 +18,7 @@ const OrderDetail = () => {
         .then(setOrder);
     }, [id, token]);
 
-    const markAsPaid = async () => {
-        await fetch(`http://127.0.0.1:8000/api/orders/${id}/pay/`, {
-            method: "PUT",
-            headers: {
-            Authorization: `Bearer ${token}`,
-            },
-        });
-
-        window.location.reload();
-    };
+    
 
     if (!order) return <p>Loading...</p>;
 
@@ -67,54 +57,6 @@ const OrderDetail = () => {
                 <p>Discount: -${order.discount}</p>
                 <h2>Total: ${order.total_price}</h2>
             </div>
-
-            {/*  PayPal Section */}
-            {!order.is_paid && (
-                <div className="order-card">
-                    <h3>Complete Payment</h3>
-                    <PayPalButtons
-                    createOrder={(data, actions) => {
-                        return actions.order.create({
-                            purchase_units: [
-                                {
-                                    amount: {
-                                        value: order.total_price.toString(),
-                                    },
-                                },
-                            ],
-                        });
-                    }}
-                    onApprove={(data, actions) => {
-                        return actions.order.capture().then(() => {
-                            markAsPaid();
-                        });
-                    }}
-                    onError={(err) => {
-                        console.error(err);
-                        alert("Payment failed. Please try again.");
-                    }}
-                    onCancel={() => {
-                        alert("Payment was cancelled.");
-                    }}
-                    />
-                </div>
-            )}
-
-            {/* Cancel Order */}
-            {!order.is_paid && !order.is_cancelled && (
-                <button
-                className="cancel-btn"
-                onClick={async () => {
-                    await fetch(`http://127.0.0.1:8000/api/orders/${id}/cancel/`, {
-                    method: "PUT",
-                    headers: { Authorization: `Bearer ${token}` },
-                    });
-                    window.location.reload();
-                }}
-                >
-                    Cancel Order
-                </button>
-            )}
 
         </div>
     );

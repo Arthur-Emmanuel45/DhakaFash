@@ -78,12 +78,11 @@ const ProductDetail = () => {
                         {product.sizes.map(size => (
                             <div className="stock-size">
                                 <button
-                                    className="stock-size-button"
+                                    className={`stock-size-button ${selectSize === size.size ? 'stock-size-button-active' : ''}`}
                                     key={size.id}
                                     disabled={size.stock === 0}
                                     onClick={() => {
                                         setSelectedSize(size.size);
-                                        // {style={backgroundColor: "red"}}
                                     }}
                                 >
                                     {size.size} : {size.stock} in stock
@@ -104,7 +103,7 @@ const ProductDetail = () => {
                     <button
                         className="add-to-cart"
                         disabled={product.stock === 0}
-                        onClick={() => addToCart(product, qty)}
+                        onClick={() => addToCart(product, qty, selectSize)}
                     >
                         {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
                     </button>

@@ -1,0 +1,33 @@
+.review-main-container {
+    background-color: #efefef;
+    padding: 50px 0;
+}
+.review-container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: auto;
+    border-radius: 10px;
+}
+.review-items {
+    margin: 2px;
+}
+.final-total {
+    font-size: 18px;
+    font-weight: 800;
+    color: #441c09;
+}
+.review-container button {
+    padding: 8px 46px;
+    margin: 20px;
+    background-color: #5a260d;
+    color: #fff;
+    border: none;
+}
+.review-container button:hover {
+    cursor: pointer;
+    background-color: #441c09;
+}

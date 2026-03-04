@@ -1,0 +1,51 @@
+.checkout-main-container {
+    background-color: #efefef;
+}
+.checkout-main-container h2 {
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
+}
+.checkout-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: 30px 20px;
+    margin: 40px 40px 0;
+    border-radius: 10px;
+}
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+.form-container form {
+    width: 100%;
+}
+.form-container input, .form-container select, .coupon-box button, .checkout-button {
+    height: 30px;
+}
+.form-container select, .coupon-box button {
+    width: 50%;
+    margin: 20px 0;
+}
+.coupon-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.coupon-box button, .checkout-button {
+    background-color: #fff;
+    border: 1px solid #000;
+}
+.coupon-box button:hover, .checkout-button:hover {
+    cursor: pointer;
+    color: #5a260d;
+}
+.summary-total {
+    font-size: 24px;
+    font-weight: 900;
+    color: #5a260d;
+}
